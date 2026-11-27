@@ -1,9 +1,710 @@
-            <span>Stories and discoveries</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Har Ventures features local adventures, motorcycle journeys, food discoveries, and community stories."
+  >
+
+  <title>Har Ventures | Bawat Biyahe, May Kuwento</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080b0f;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+
+    /* NAVIGATION */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 11, 15, 0.95);
+      border-bottom: 1px solid #252b33;
+    }
+
+    .nav-container {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #ffffff;
+      font-size: 19px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .logo-box {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      color: #111111;
+      background: linear-gradient(135deg, #ffc400, #ff6800);
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #c1c7d0;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #ffb000;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 86vh;
+      display: flex;
+      align-items: center;
+      padding: 70px 0;
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(255, 166, 0, 0.20),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 15% 80%,
+          rgba(255, 92, 0, 0.12),
+          transparent 28%
+        ),
+        #080b0f;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .small-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 14px;
+      border: 1px solid rgba(255, 176, 0, 0.45);
+      border-radius: 30px;
+      color: #ffb000;
+      background: rgba(255, 176, 0, 0.08);
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin-bottom: 16px;
+      font-size: clamp(58px, 9vw, 105px);
+      line-height: 0.88;
+      letter-spacing: -5px;
+    }
+
+    .hero h1 span {
+      color: #ffb000;
+    }
+
+    .tagline {
+      margin-bottom: 16px;
+      color: #ffffff;
+      font-size: clamp(22px, 3vw, 31px);
+      font-weight: bold;
+    }
+
+    .hero-description {
+      max-width: 650px;
+      margin-bottom: 30px;
+      color: #b6bec9;
+      font-size: 17px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      color: #111111;
+      background: linear-gradient(135deg, #ffc400, #ff6800);
+    }
+
+    .button-secondary {
+      color: #ffffff;
+      border: 1px solid #3b424d;
+      background: #171b21;
+    }
+
+    .button-secondary:hover {
+      border-color: #ffb000;
+    }
+
+    /* HERO VISUAL */
+
+    .hero-visual {
+      position: relative;
+      min-height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid #292f38;
+      border-radius: 30px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255, 176, 0, 0.16),
+          transparent 45%
+        ),
+        #13171c;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .follower-box {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      z-index: 4;
+      padding: 14px 18px;
+      border: 1px solid #3a4049;
+      border-radius: 15px;
+      background: rgba(8, 11, 15, 0.90);
+      text-align: center;
+    }
+
+    .follower-box strong {
+      display: block;
+      color: #ffb000;
+      font-size: 27px;
+      line-height: 1.1;
+    }
+
+    .follower-box span {
+      color: #b6bec9;
+      font-size: 12px;
+    }
+
+    .helmet {
+      position: relative;
+      z-index: 3;
+      width: 210px;
+      height: 185px;
+      border: 9px solid #090b0e;
+      border-radius: 50% 50% 42% 42%;
+      background: linear-gradient(145deg, #ffc400, #ff6800);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
+      transform: translateY(-25px) rotate(-5deg);
+    }
+
+    .helmet::before {
+      content: "";
+      position: absolute;
+      top: 43px;
+      right: -9px;
+      width: 132px;
+      height: 60px;
+      border: 7px solid #090b0e;
+      border-radius: 8px 55px 45px 8px;
+      background: linear-gradient(160deg, #35424e, #090b0e);
+    }
+
+    .helmet::after {
+      content: "HV";
+      position: absolute;
+      bottom: 25px;
+      left: 32px;
+      color: #111111;
+      font-size: 35px;
+      font-weight: 900;
+    }
+
+    .road {
+      position: absolute;
+      bottom: 28px;
+      left: -20%;
+      width: 140%;
+      height: 135px;
+      border-top: 2px solid #272d34;
+      border-bottom: 2px solid #272d34;
+      background: #050709;
+      transform: rotate(-8deg);
+    }
+
+    .road::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      border-top: 5px dashed #ffb000;
+    }
+
+    /* SECTIONS */
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      margin-bottom: 15px;
+      font-size: clamp(35px, 5vw, 52px);
+      line-height: 1.1;
+    }
+
+    .section-intro {
+      max-width: 720px;
+      margin-bottom: 35px;
+      color: #b6bec9;
+      font-size: 17px;
+    }
+
+    /* CONTENT CARDS */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      min-height: 270px;
+      padding: 30px;
+      border: 1px solid #292f38;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #171c22, #11151a);
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #ffb000;
+    }
+
+    .card-icon {
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      border-radius: 15px;
+      background: rgba(255, 176, 0, 0.13);
+      font-size: 27px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 23px;
+    }
+
+    .card p {
+      color: #b6bec9;
+    }
+
+    /* ABOUT */
+
+    .about-section {
+      background: #0e1217;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: stretch;
+    }
+
+    .about-text {
+      padding: 38px;
+      border: 1px solid #292f38;
+      border-radius: 24px;
+      background: #151a20;
+    }
+
+    .about-text h2 {
+      margin-bottom: 18px;
+      font-size: 42px;
+    }
+
+    .about-text p {
+      margin-bottom: 16px;
+      color: #b6bec9;
+    }
+
+    .statistics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .stat {
+      min-height: 155px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border: 1px solid #292f38;
+      border-radius: 20px;
+      background: #171c22;
+      text-align: center;
+    }
+
+    .stat strong {
+      margin-bottom: 8px;
+      color: #ffb000;
+      font-size: 31px;
+    }
+
+    .stat span {
+      color: #b6bec9;
+      font-size: 14px;
+    }
+
+    /* CONNECT */
+
+    .connect-box {
+      padding: 60px 30px;
+      border: 1px solid rgba(255, 176, 0, 0.35);
+      border-radius: 28px;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(255, 176, 0, 0.18),
+          rgba(255, 104, 0, 0.05)
+        ),
+        #151a20;
+      text-align: center;
+    }
+
+    .connect-box h2 {
+      margin-bottom: 12px;
+      font-size: clamp(38px, 6vw, 62px);
+    }
+
+    .connect-box p {
+      max-width: 710px;
+      margin: 0 auto 28px;
+      color: #b6bec9;
+      font-size: 17px;
+    }
+
+    .center-buttons {
+      justify-content: center;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid #252b33;
+      color: #9fa7b2;
+      background: #080b0f;
+      text-align: center;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 55px 0;
+      }
+
+      .hero-visual {
+        min-height: 360px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: 92%;
+      }
+
+      .hero h1 {
+        font-size: 58px;
+        letter-spacing: -3px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
+      }
+
+      .statistics {
+        grid-template-columns: 1fr;
+      }
+
+      .connect-box {
+        padding: 45px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav class="navbar">
+    <div class="container nav-container">
+
+      <a href="#home" class="logo">
+        <span class="logo-box">HV</span>
+        <span>HAR VENTURES</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#content">Adventures</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#connect">Connect</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div>
+          <span class="small-label">
+            Local Creator · Isabela
+          </span>
+
+          <h1>
+            <span>HAR</span><br>
+            VENTURES
+          </h1>
+
+          <p class="tagline">
+            Bawat Biyahe, May Kuwento.
+          </p>
+
+          <p class="hero-description">
+            Local adventures, motorcycle journeys, food
+            discoveries, community stories, technology,
+            and everyday experiences shared with a growing
+            online community.
+          </p>
+
+          <div class="buttons">
+
+            <!-- Replace the Facebook URL below. -->
+
+            <a
+              href="YOUR_FACEBOOK_PAGE_URL"
+              class="button button-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Follow on Facebook
+            </a>
+
+            <a
+              href="https://www.youtube.com/channel/UCuxIVUb4yCJO0NqOCEvRMLw"
+              class="button button-secondary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Watch on YouTube
+            </a>
+
+          </div>
+        </div>
+
+        <div class="hero-visual">
+
+          <div class="follower-box">
+            <strong>120K+</strong>
+            <span>Facebook Followers</span>
+          </div>
+
+          <div class="helmet"></div>
+          <div class="road"></div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTENT SECTION -->
+
+    <section class="section" id="content">
+      <div class="container">
+
+        <h2 class="section-title">
+          Explore the Journey
+        </h2>
+
+        <p class="section-intro">
+          From provincial roads and local food stops to
+          community features, every upload celebrates
+          places, people, and stories worth discovering.
+        </p>
+
+        <div class="cards">
+
+          <article class="card">
+            <div class="card-icon">🏍️</div>
+
+            <h3>Rides and Road Trips</h3>
+
+            <p>
+              Weekend rides, provincial adventures,
+              scenic roads, and memorable stops around
+              Isabela and beyond.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🍜</div>
+
+            <h3>Local Food Finds</h3>
+
+            <p>
+              Discover neighborhood restaurants, cafés,
+              food stalls, and growing local businesses.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🤝</div>
+
+            <h3>Community Stories</h3>
+
+            <p>
+              Stories that highlight local communities,
+              meaningful activities, and moments that
+              bring people together.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+
+    <section class="section about-section" id="about">
+      <div class="container about-grid">
+
+        <div class="about-text">
+
+          <h2>About Har Ventures</h2>
+
+          <p>
+            Har Ventures is a local adventure and lifestyle
+            platform built around curiosity, travel,
+            technology, community, and the belief that
+            ordinary days can become stories worth sharing.
+          </p>
+
+          <p>
+            The platform connects audiences with local
+            destinations, food businesses, road experiences,
+            and community-centered content through relatable
+            videos and social media posts.
+          </p>
+
+        </div>
+
+        <div class="statistics">
+
+          <div class="stat">
+            <strong>120K+</strong>
+            <span>Facebook Followers</span>
           </div>
 
           <div class="stat">
-            <strong>Real</strong>
-            <span>Journeys and experiences</span>
+            <strong>114+</strong>
+            <span>YouTube Videos</span>
+          </div>
+
+          <div class="stat">
+            <strong>LOCAL</strong>
+            <span>Stories and Discoveries</span>
+          </div>
+
+          <div class="stat">
+            <strong>REAL</strong>
+            <span>Journeys and Experiences</span>
           </div>
 
         </div>
@@ -11,32 +712,30 @@
       </div>
     </section>
 
-    <!-- Connect section -->
+    <!-- CONNECT SECTION -->
 
-    <section id="connect">
+    <section class="section" id="connect">
       <div class="container">
 
-        <div class="connect-panel">
+        <div class="connect-box">
 
           <h2>Ride. Discover. Share.</h2>
 
           <p>
             Follow Har Ventures for new adventures,
-            local discoveries, and stories from the road.
-            For partnerships and collaborations, connect
-            through the official social media pages.
+            local discoveries, food features, and stories
+            from the road. Connect through the official
+            social media pages for partnerships and
+            collaborations.
           </p>
 
-          <div class="actions center-actions">
+          <div class="buttons center-buttons">
 
-            <!--
-              Replace YOUR_FACEBOOK_PAGE_URL
-              with the exact Har Ventures Facebook page link.
-            -->
+            <!-- Replace the Facebook URL below. -->
 
             <a
-              class="button button-primary"
               href="YOUR_FACEBOOK_PAGE_URL"
+              class="button button-primary"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -44,8 +743,8 @@
             </a>
 
             <a
-              class="button button-secondary"
               href="https://www.youtube.com/channel/UCuxIVUb4yCJO0NqOCEvRMLw"
+              class="button button-secondary"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -55,12 +754,13 @@
           </div>
 
         </div>
+
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
 
   <footer>
     <div class="container">
